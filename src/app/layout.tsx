@@ -5,8 +5,6 @@ import {
   Josefin_Sans,
   Playfair_Display,
 } from "next/font/google";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -72,9 +70,7 @@ export default function RootLayout({
       className={`${josefin.variable} ${cormorant.variable} ${playfair.variable} ${greatVibes.variable} h-full antialiased`}
     >
       <body className="luxury-grain flex min-h-full flex-col bg-background font-sans text-lg font-light text-foreground">
-        <Header />
-        <main className="flex-1 pt-16 md:pt-20">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
