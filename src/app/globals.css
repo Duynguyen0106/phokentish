@@ -1,0 +1,296 @@
+@import "tailwindcss";
+
+:root {
+  --background: #100e0c;
+  --foreground: #f7f2ea;
+  --muted: #c9bfb2;
+  --muted-light: #ddd4c8;
+  --gold: #c9a962;
+  --gold-light: #e0c88a;
+  --gold-muted: #c9a96266;
+  --border: #c9a96242;
+  --border-subtle: #f7f2ea14;
+  --surface: #1a1714;
+  --surface-alt: #141210;
+  --surface-elevated: #242019;
+  --yellow: #f5c518;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-muted: var(--gold-muted);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-yellow: var(--yellow);
+  --font-sans: var(--font-josefin);
+  --font-serif: var(--font-cormorant);
+  --font-display: var(--font-playfair);
+  --font-script: var(--font-great-vibes);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-josefin), "Josefin Sans", sans-serif;
+  font-weight: 300;
+}
+
+.luxury-grain {
+  position: relative;
+}
+
+.luxury-grain::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.font-display {
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
+}
+
+.font-serif {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+}
+
+.font-script {
+  font-family: var(--font-great-vibes), "Great Vibes", cursive;
+}
+
+.section-pad {
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-inline: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-pad {
+    padding-inline: 4rem;
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.9s ease-out both;
+}
+
+.fade-up-delay {
+  animation: fadeUp 1s ease-out 0.2s both;
+}
+
+.fade-up-delay-2 {
+  animation: fadeUp 1s ease-out 0.4s both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes kenBurns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.hero-zoom {
+  animation: kenBurns 18s ease-out forwards;
+}
+
+@keyframes goldShimmer {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.gold-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-muted) 20%,
+    var(--gold) 50%,
+    var(--gold-muted) 80%,
+    transparent
+  );
+  animation: goldShimmer 4s ease-in-out infinite;
+}
+
+.label-caps {
+  font-family: var(--font-josefin), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.luxury-input {
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  color: var(--foreground);
+  font-family: var(--font-josefin), sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  padding: 1rem 1.125rem;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.luxury-input:hover {
+  border-color: #c9a96273;
+}
+
+.luxury-input:focus {
+  border-color: var(--gold);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.14);
+}
+
+.luxury-input::placeholder {
+  color: color-mix(in oklab, var(--muted) 70%, transparent);
+}
+
+.luxury-input-date {
+  display: block;
+  overflow: hidden;
+}
+
+.luxury-input-date::-webkit-date-and-time-value {
+  min-width: 0;
+  text-align: left;
+}
+
+.luxury-card {
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    165deg,
+    var(--surface-elevated) 0%,
+    var(--surface) 55%,
+    var(--surface-alt) 100%
+  );
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+.luxury-card:hover {
+  border-color: var(--gold-muted);
+}
+
+.fine-dining-panel {
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    180deg,
+    var(--surface-elevated) 0%,
+    var(--surface) 100%
+  );
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
+
+.booking-select-card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.booking-select-card:hover {
+  border-color: rgba(201, 169, 98, 0.55);
+  transform: translateY(-1px);
+}
+
+.booking-select-card[data-selected="true"] {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold), 0 8px 32px rgba(201, 169, 98, 0.12);
+  background: linear-gradient(
+    145deg,
+    rgba(201, 169, 98, 0.08) 0%,
+    var(--surface) 100%
+  );
+}
+
+.menu-category-rail {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 169, 98, 0.45) transparent;
+}
+
+.menu-category-rail::-webkit-scrollbar {
+  height: 4px;
+}
+
+.menu-category-rail::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.menu-category-rail::-webkit-scrollbar-thumb {
+  background: rgba(201, 169, 98, 0.45);
+  border-radius: 9999px;
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 12pt;
+  }
+
+  .luxury-grain::before,
+  header,
+  footer,
+  nav {
+    display: none !important;
+  }
+
+  .confirmation-print {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .fade-up-delay,
+  .fade-up-delay-2,
+  .hero-zoom,
+  .gold-line {
+    animation: none;
+  }
+}
