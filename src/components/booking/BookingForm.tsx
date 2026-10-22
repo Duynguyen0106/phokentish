@@ -141,7 +141,7 @@ export function BookingForm() {
                 Date & guests
               </h2>
               <p className="mt-2 text-lg text-muted">
-                Pho Kentish {location.shortName} · {location.address}
+                {location.name} · {location.address}
               </p>
             </header>
 
@@ -196,7 +196,7 @@ export function BookingForm() {
                 Select a time
               </h2>
               <p className="mt-2 text-lg leading-relaxed text-muted">
-                Pho Kentish {location.shortName} · {partySize}{" "}
+                {location.name} · {partySize}{" "}
                 {partySize === 1 ? "guest" : "guests"}
                 <span className="block sm:inline">
                   <span className="hidden sm:inline"> · </span>
