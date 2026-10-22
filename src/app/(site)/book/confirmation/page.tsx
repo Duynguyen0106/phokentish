@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { ConfirmationActions } from "@/components/booking/ConfirmationActions";
 import { Button } from "@/components/ui/Button";
 import { formatBookingDateTime } from "@/lib/bookings/calendar";
+import {
+  BOOKING_RECEIPT_COOKIE,
+  receiptToBooking,
+  verifyBookingReceipt,
+} from "@/lib/bookings/receipt";
 import { SEATING_LABELS } from "@/lib/constants";
 import { getLocation } from "@/lib/data/locations";
 import { getBookingByReference } from "@/lib/db/store";
@@ -17,9 +23,23 @@ export default async function ConfirmationPage({
   searchParams: Promise<{ ref?: string }>;
 }) {
   const params = await searchParams;
-  const booking = params.ref
+  const cookieStore = await cookies();
+  const receipt = verifyBookingReceipt(
+    cookieStore.get(BOOKING_RECEIPT_COOKIE)?.value,
+  );
+
+  let booking = params.ref
     ? await getBookingByReference(params.ref)
     : null;
+
+  // Fallback: signed receipt cookie (covers Vercel /tmp instance mismatch)
+  if (
+    !booking &&
+    receipt &&
+    (!params.ref || receipt.referenceCode === params.ref)
+  ) {
+    booking = receiptToBooking(receipt);
+  }
 
   if (!booking) {
     return (
@@ -27,6 +47,10 @@ export default async function ConfirmationPage({
         <h1 className="font-serif text-4xl font-normal text-foreground">
           Reservation not found
         </h1>
+        <p className="mt-4 font-serif text-lg text-muted">
+          If you just booked, keep this tab open from the confirmation link, or
+          call us on 020 7428 9898 with your details.
+        </p>
         <Link href="/book" className="mt-10 inline-block">
           <Button>Make a reservation</Button>
         </Link>
@@ -57,11 +81,11 @@ export default async function ConfirmationPage({
         ) : (
           <>
             {" "}
-            A confirmation will be sent to{" "}
-            <span className="text-foreground">{booking.customerEmail}</span>.
+            Your table is held under{" "}
+            <span className="text-foreground">{booking.customerEmail}</span>
+            . Please save or print this page for your records.
           </>
-        )}{" "}
-        Please also save this page or print it before you leave.
+        )}
       </p>
 
       <div

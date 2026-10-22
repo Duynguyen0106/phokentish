@@ -1,22 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isSlotAvailable } from "@/lib/bookings/availability";
 import {
-  bookingPersistenceError,
-  canPersistBookings,
-} from "@/lib/db/persistence";
+  BOOKING_RECEIPT_COOKIE,
+  signBookingReceipt,
+} from "@/lib/bookings/receipt";
+import { bookingPersistenceError } from "@/lib/db/persistence";
 import { createBooking } from "@/lib/db/store";
 import { sendBookingConfirmation } from "@/lib/notifications/send";
 import { bookingSchema } from "@/lib/validation/booking";
 
 export async function POST(request: NextRequest) {
   try {
-    if (!canPersistBookings()) {
-      return NextResponse.json(
-        { error: bookingPersistenceError() },
-        { status: 503 },
-      );
-    }
-
     const body = await request.json();
     const parsed = bookingSchema.safeParse(body);
 
@@ -61,10 +55,24 @@ export async function POST(request: NextRequest) {
       console.error("[api/bookings:notify]", notifyError);
     }
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       id: booking.id,
       referenceCode: booking.referenceCode,
     });
+
+    // Signed receipt so the confirmation page works even if the
+    // serverless instance that wrote /tmp is not the one that renders it.
+    response.cookies.set({
+      name: BOOKING_RECEIPT_COOKIE,
+      value: signBookingReceipt(booking),
+      httpOnly: true,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7,
+    });
+
+    return response;
   } catch (error) {
     console.error("[api/bookings]", error);
     const message =

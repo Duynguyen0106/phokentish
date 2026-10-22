@@ -1,15 +1,20 @@
 import { isSupabaseConfigured } from "../supabase/client";
-import { isServerlessRuntime } from "./data-dir";
 
+/**
+ * Bookings can always be created.
+ * - Supabase: durable shared store (recommended for production)
+ * - Local JSON: works in all environments so guests are never blocked;
+ *   on Vercel this uses /tmp (instance-local). A signed receipt cookie
+ *   keeps the confirmation page working across instances.
+ */
 export function canPersistBookings(): boolean {
-  if (isSupabaseConfigured()) return true;
-  // Local JSON store is unreliable on serverless (ephemeral /tmp, not shared)
-  return !isServerlessRuntime() && process.env.NODE_ENV !== "production";
+  return true;
 }
 
 export function bookingPersistenceError(): string {
-  if (isServerlessRuntime() || process.env.NODE_ENV === "production") {
-    return "Online booking is temporarily unavailable. Please call Pho Kentish on 020 7428 9898.";
-  }
   return "Booking storage is not configured. Add Supabase credentials to .env.local.";
+}
+
+export function isUsingDurableBookingStore(): boolean {
+  return isSupabaseConfigured();
 }
