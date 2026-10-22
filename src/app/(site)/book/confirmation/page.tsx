@@ -70,8 +70,8 @@ export default async function ConfirmationPage({
         We await your arrival
       </h1>
       <p className="mt-4 text-base leading-relaxed text-muted sm:mt-6 sm:text-lg">
-        Thank you, {booking.customerName}. Your table at Pho Kentish{" "}
-        {location.shortName} is reserved for {dateTime}.
+        Thank you, {booking.customerName}. Your table at {location.name} is
+        reserved for {dateTime}.
         {booking.confirmationSentAt ? (
           <>
             {" "}
