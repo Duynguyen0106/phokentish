@@ -109,7 +109,7 @@ export function BookingForm() {
   const availableSlots = slots.filter((s) => s.available);
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[1fr_320px] lg:gap-14">
+    <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_280px] xl:gap-10">
       <form onSubmit={handleSubmit} className="min-w-0 space-y-8 sm:space-y-10">
         <div className="space-y-3">
           <BookingStepper currentStep={step} />
@@ -221,7 +221,7 @@ export function BookingForm() {
                   : "No tables available for this date. Please try another day."}
               </p>
             ) : (
-              <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-2.5 md:grid-cols-5">
+              <div className="grid min-w-0 grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-2.5 lg:grid-cols-4">
                 {slots.map((slot) => (
                   <button
                     key={slot.time}
@@ -229,7 +229,7 @@ export function BookingForm() {
                     disabled={!slot.available}
                     onClick={() => setTime(slot.time)}
                     className={cn(
-                      "min-h-11 border py-3 font-sans text-sm tracking-widest transition duration-200 sm:py-3.5 sm:text-base",
+                      "min-h-11 w-full border px-1 py-3 font-sans text-sm tabular-nums tracking-wide transition duration-200 sm:py-3.5 sm:text-base",
                       !slot.available && "cursor-not-allowed opacity-25",
                       time === slot.time
                         ? "border-gold bg-gold text-background shadow-lg shadow-gold/20"

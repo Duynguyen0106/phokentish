@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 export default function BookPage() {
   return (
     <section className="section-pad mx-auto max-w-7xl py-20 md:py-28">
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
-        <div>
+      <div className="grid gap-12 lg:grid-cols-[minmax(240px,0.85fr)_minmax(0,1.35fr)] lg:gap-12 xl:gap-16">
+        <div className="min-w-0">
           <SectionHeading
             eyebrow="Reservations"
             title="Book a table"
