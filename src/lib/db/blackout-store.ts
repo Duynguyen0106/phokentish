@@ -2,6 +2,8 @@ import { promises as fs } from "fs";
 import path from "path";
 import { randomUUID } from "crypto";
 import { getDataDir } from "./data-dir";
+import { getD1 } from "./d1";
+import * as d1 from "./d1-store";
 import {
   createServerClient,
   isSupabaseConfigured,
@@ -54,6 +56,9 @@ export async function listBlackoutDates(filters?: {
   from?: string;
   to?: string;
 }): Promise<BlackoutDate[]> {
+  const db = await getD1();
+  if (db) return d1.d1ListBlackoutDates(db, filters);
+
   if (useSupabase()) {
     const supabase = getSupabase();
     let query = supabase
@@ -104,6 +109,9 @@ export async function createBlackoutDate(input: {
   date: string;
   reason?: string;
 }): Promise<BlackoutDate> {
+  const db = await getD1();
+  if (db) return d1.d1CreateBlackoutDate(db, input);
+
   if (useSupabase()) {
     const supabase = getSupabase();
     const { data, error } = await supabase
@@ -133,6 +141,9 @@ export async function createBlackoutDate(input: {
 }
 
 export async function deleteBlackoutDate(id: string): Promise<boolean> {
+  const db = await getD1();
+  if (db) return d1.d1DeleteBlackoutDate(db, id);
+
   if (useSupabase()) {
     const supabase = getSupabase();
     const { error } = await supabase.from("blackout_dates").delete().eq("id", id);

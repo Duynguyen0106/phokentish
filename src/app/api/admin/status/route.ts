@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdminAuthenticated } from "@/lib/auth/admin";
 import { getEnvStatus } from "@/lib/env";
-import { isUsingLocalStore } from "@/lib/db/store";
+import { getStorageBackend } from "@/lib/db/store";
 
 export async function GET() {
   if (!(await isAdminAuthenticated())) {
@@ -9,9 +9,16 @@ export async function GET() {
   }
 
   const env = getEnvStatus();
+  const storage = await getStorageBackend();
+  const storageLabel =
+    storage === "d1"
+      ? "Cloudflare D1"
+      : storage === "supabase"
+        ? "Supabase"
+        : "local file store";
 
   return NextResponse.json({
-    storage: isUsingLocalStore() ? "local file store" : "Supabase",
+    storage: storageLabel,
     services: env,
   });
 }

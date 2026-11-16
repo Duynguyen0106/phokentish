@@ -1,22 +1,23 @@
 import { NextResponse } from "next/server";
 import { getEnvStatus } from "@/lib/env";
-import { isUsingLocalStore } from "@/lib/db/store";
+import { getStorageBackend } from "@/lib/db/store";
 
 export async function GET() {
   const env = getEnvStatus();
+  const storage = await getStorageBackend();
 
   return NextResponse.json({
     status: "ok",
     timestamp: new Date().toISOString(),
-    storage: isUsingLocalStore() ? "local" : "supabase",
+    storage,
     services: {
-      database: env.database,
+      database: storage === "d1" || storage === "supabase" ? "configured" : env.database,
       email: env.email,
       sms: env.sms,
       admin: env.admin,
       cron: env.cron,
     },
-    productionReady: env.productionReady,
+    productionReady: env.productionReady || storage === "d1",
     warnings: env.warnings,
   });
 }

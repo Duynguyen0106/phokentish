@@ -7,6 +7,8 @@ import {
   isSupabaseConfigured,
 } from "../supabase/client";
 import { getDataDir } from "./data-dir";
+import { getD1 } from "./d1";
+import * as d1 from "./d1-store";
 import type {
   Booking,
   BookingStatus,
@@ -109,6 +111,9 @@ export async function findOrCreateCustomer(input: {
   email: string;
   phone: string;
 }): Promise<Customer> {
+  const db = await getD1();
+  if (db) return d1.d1FindOrCreateCustomer(db, input);
+
   const normalizedEmail = input.email.toLowerCase().trim();
   const normalizedPhone = input.phone.replace(/\s/g, "");
 
@@ -189,6 +194,9 @@ export async function getBookingsForSlot(
   date: string,
   time: string,
 ): Promise<Booking[]> {
+  const db = await getD1();
+  if (db) return d1.d1GetBookingsForSlot(db, locationSlug, date, time);
+
   if (useSupabase()) {
     const supabase = getSupabase();
     const { data, error } = await supabase
@@ -216,6 +224,9 @@ export async function getBookingsForSlot(
 export async function createBooking(
   input: CreateBookingInput,
 ): Promise<Booking> {
+  const db = await getD1();
+  if (db) return d1.d1CreateBooking(db, input);
+
   const customer = await findOrCreateCustomer({
     name: input.name,
     email: input.email,
@@ -277,6 +288,9 @@ export async function createBooking(
 }
 
 export async function getBookingById(id: string): Promise<Booking | null> {
+  const db = await getD1();
+  if (db) return d1.d1GetBookingById(db, id);
+
   if (useSupabase()) {
     const supabase = getSupabase();
     const { data } = await supabase
@@ -294,6 +308,9 @@ export async function getBookingById(id: string): Promise<Booking | null> {
 export async function getBookingByReference(
   referenceCode: string,
 ): Promise<Booking | null> {
+  const db = await getD1();
+  if (db) return d1.d1GetBookingByReference(db, referenceCode);
+
   if (useSupabase()) {
     const supabase = getSupabase();
     const { data } = await supabase
@@ -315,6 +332,9 @@ export async function listBookings(filters?: {
   to?: string;
   status?: BookingStatus;
 }): Promise<Booking[]> {
+  const db = await getD1();
+  if (db) return d1.d1ListBookings(db, filters);
+
   if (useSupabase()) {
     const supabase = getSupabase();
     let query = supabase.from("bookings").select("*").order("booking_date", {
@@ -390,6 +410,9 @@ export async function updateBooking(
     >
   > & { date?: string; time?: string; partySize?: number },
 ): Promise<Booking | null> {
+  const db = await getD1();
+  if (db) return d1.d1UpdateBooking(db, id, updates);
+
   if (useSupabase()) {
     const supabase = getSupabase();
     const payload: Record<string, unknown> = {};
@@ -444,6 +467,9 @@ export async function updateBooking(
 }
 
 export async function listCustomers(search?: string): Promise<Customer[]> {
+  const db = await getD1();
+  if (db) return d1.d1ListCustomers(db, search);
+
   if (useSupabase()) {
     const supabase = getSupabase();
     const { data, error } = await supabase
@@ -497,6 +523,9 @@ export async function updateCustomerNotes(
   id: string,
   notes: string,
 ): Promise<Customer | null> {
+  const db = await getD1();
+  if (db) return d1.d1UpdateCustomerNotes(db, id, notes);
+
   if (useSupabase()) {
     const supabase = getSupabase();
     const { data, error } = await supabase
@@ -529,6 +558,9 @@ export async function updateCustomerNotes(
 export async function listBookingsForCustomer(
   customerId: string,
 ): Promise<Booking[]> {
+  const db = await getD1();
+  if (db) return d1.d1ListBookingsForCustomer(db, customerId);
+
   if (useSupabase()) {
     const supabase = getSupabase();
     const { data, error } = await supabase
@@ -586,4 +618,10 @@ export async function getBookingsNeedingReminder(): Promise<Booking[]> {
 
 export function isUsingLocalStore(): boolean {
   return !useSupabase();
+}
+
+export async function getStorageBackend(): Promise<"d1" | "supabase" | "local"> {
+  if (await getD1()) return "d1";
+  if (useSupabase()) return "supabase";
+  return "local";
 }

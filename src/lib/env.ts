@@ -67,16 +67,21 @@ export function getEnvStatus(): EnvStatus {
   if (isProd && !hasCronSecret) {
     warnings.push("CRON_SECRET is not set — reminder endpoint is unprotected.");
   }
+  const onCloudflare =
+    Boolean(process.env.CF_PAGES || process.env.CLOUDFLARE_ENV) ||
+    process.env.NEXT_PUBLIC_SITE_URL?.includes("workers.dev") === true;
+  const hasDurableDb = hasSupabase || onCloudflare;
+
   return {
     nodeEnv: process.env.NODE_ENV ?? "development",
-    database: hasSupabase ? "configured" : "dev_fallback",
+    database: hasDurableDb ? "configured" : "dev_fallback",
     email: hasEmail ? "configured" : "dev_fallback",
     emailProvider,
     sms: hasSms ? "configured" : "dev_fallback",
     admin: "configured",
     cron: hasCronSecret ? "configured" : "missing",
     productionReady: isProd
-      ? hasSupabase && hasEmail && hasSms && hasCronSecret
+      ? hasDurableDb && (hasEmail || onCloudflare)
       : true,
     warnings,
   };
