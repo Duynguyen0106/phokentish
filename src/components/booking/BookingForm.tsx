@@ -57,19 +57,20 @@ export function BookingForm() {
       const res = await fetch(`/api/availability?${params}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Failed to load times");
-      setSlots(data.slots);
-      if (!data.slots.some((s: AvailabilitySlot) => s.time === time && s.available)) {
-        setTime("");
-      }
+      const nextSlots = (data.slots ?? []) as AvailabilitySlot[];
+      setSlots(nextSlots);
+      setTime((current) =>
+        nextSlots.some((s) => s.time === current && s.available) ? current : "",
+      );
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load times");
     } finally {
       setSlotsLoading(false);
     }
-  }, [locationSlug, date, partySize, time]);
+  }, [locationSlug, date, partySize]);
 
   useEffect(() => {
-    if (step >= 2) fetchSlots();
+    if (step >= 2) void fetchSlots();
   }, [step, fetchSlots]);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -176,12 +177,17 @@ export function BookingForm() {
               </label>
             </div>
 
-            <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:justify-end">
+            <div className="relative z-10 flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:justify-end">
               <Button
                 type="button"
                 size="lg"
                 className="w-full sm:w-auto"
-                onClick={() => setStep(2)}
+                disabled={!date}
+                onClick={() => {
+                  if (!date) return;
+                  setError(null);
+                  setStep(2);
+                }}
               >
                 Continue
               </Button>
@@ -427,7 +433,7 @@ export function BookingForm() {
         )}
       </form>
 
-      <div className="hidden lg:block">
+      <aside className="hidden min-w-0 xl:block">
         <BookingSummary
           locationSlug={locationSlug}
           date={date}
@@ -435,7 +441,7 @@ export function BookingForm() {
           partySize={partySize}
           seatingPreference={seatingPreference}
         />
-      </div>
+      </aside>
     </div>
   );
 }

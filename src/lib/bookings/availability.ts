@@ -1,4 +1,12 @@
-import { addDays, addMinutes, format, isBefore, parse, startOfDay } from "date-fns";
+import {
+  addDays,
+  addMinutes,
+  format,
+  isBefore,
+  parse,
+  startOfDay,
+} from "date-fns";
+import { fromZonedTime, toZonedTime } from "date-fns-tz";
 import {
   MAX_ADVANCE_DAYS,
   MIN_LEAD_MINUTES,
@@ -7,6 +15,9 @@ import { getResolvedLocation } from "../db/settings-store";
 import { isDateBlackout } from "../db/blackout-store";
 import { getBookingsForSlot } from "../db/store";
 import type { AvailabilitySlot, LocationSlug } from "../types";
+import { getServiceWindowsForDate } from "./service-windows";
+
+const VENUE_TZ = "Europe/London";
 
 function parseTime(time: string): Date {
   return parse(time, "HH:mm", new Date());
@@ -33,6 +44,30 @@ export function generateTimeSlots(
   return slots;
 }
 
+function slotsForDate(
+  date: string,
+  intervalMinutes: number,
+  fallbackOpen: string,
+  fallbackClose: string,
+): string[] {
+  const windows = getServiceWindowsForDate(date);
+  if (windows.length === 0) {
+    return generateTimeSlots(fallbackOpen, fallbackClose, intervalMinutes);
+  }
+
+  return windows.flatMap((window) =>
+    generateTimeSlots(window.open, window.close, intervalMinutes),
+  );
+}
+
+function londonToday(): Date {
+  return startOfDay(toZonedTime(new Date(), VENUE_TZ));
+}
+
+function londonSlotInstant(date: string, time: string): Date {
+  return fromZonedTime(`${date}T${time}:00`, VENUE_TZ);
+}
+
 export async function getAvailability(
   locationSlug: LocationSlug,
   date: string,
@@ -41,43 +76,34 @@ export async function getAvailability(
   const location = await getResolvedLocation(locationSlug);
 
   const selectedDate = startOfDay(parse(date, "yyyy-MM-dd", new Date()));
-  const today = startOfDay(new Date());
+  const today = londonToday();
   const maxDate = addDays(today, MAX_ADVANCE_DAYS);
 
   if (selectedDate < today || selectedDate > maxDate) {
     return [];
   }
 
+  const allSlots = slotsForDate(
+    date,
+    location.slotIntervalMinutes,
+    location.openTime,
+    location.closeTime,
+  );
+
   if (await isDateBlackout(locationSlug, date)) {
-    return generateTimeSlots(
-      location.openTime,
-      location.closeTime,
-      location.slotIntervalMinutes,
-    ).map((time) => ({
+    return allSlots.map((time) => ({
       time,
       available: false,
       remainingCovers: 0,
     }));
   }
 
-  const slots = generateTimeSlots(
-    location.openTime,
-    location.closeTime,
-    location.slotIntervalMinutes,
-  );
-
   const now = new Date();
   const minBookingTime = addMinutes(now, MIN_LEAD_MINUTES);
 
   const availability = await Promise.all(
-    slots.map(async (time) => {
-      const slotDateTime = parse(
-        `${date} ${time}`,
-        "yyyy-MM-dd HH:mm",
-        new Date(),
-      );
-
-      if (slotDateTime < minBookingTime) {
+    allSlots.map(async (time) => {
+      if (londonSlotInstant(date, time) < minBookingTime) {
         return {
           time,
           available: false,
