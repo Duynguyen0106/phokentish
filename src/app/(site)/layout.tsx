@@ -9,7 +9,7 @@ export default function SiteLayout({
   return (
     <>
       <Header />
-      <main className="flex-1 pt-16 md:pt-20">{children}</main>
+      <main className="relative z-10 flex-1 pt-16 md:pt-20">{children}</main>
       <Footer />
     </>
   );

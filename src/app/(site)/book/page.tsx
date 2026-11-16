@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function BookPage() {
   return (
-    <section className="section-pad mx-auto max-w-7xl py-20 md:py-28">
+    <section className="section-pad relative z-10 mx-auto max-w-7xl py-20 pb-28 md:py-28 md:pb-32">
       <div className="grid gap-12 lg:grid-cols-[minmax(240px,0.85fr)_minmax(0,1.35fr)] lg:gap-12 xl:gap-16">
         <div className="min-w-0">
           <SectionHeading
@@ -51,7 +51,7 @@ export default function BookPage() {
           </div>
         </div>
 
-        <div className="min-w-0 border border-border bg-surface-alt p-4 sm:p-6 md:p-10">
+        <div className="relative z-10 min-w-0 border border-border bg-surface-alt p-4 sm:p-6 md:p-10">
           <Suspense
             fallback={
               <p className="font-serif text-lg text-muted">Loading booking form…</p>

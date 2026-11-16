@@ -250,7 +250,7 @@ export function BookingForm() {
               </div>
             )}
 
-            <div className="flex flex-col-reverse gap-3 border-t border-gold/15 pt-6 sm:flex-row sm:flex-wrap sm:gap-4">
+            <div className="relative z-10 flex flex-col-reverse gap-3 border-t border-gold/15 pt-6 sm:flex-row sm:flex-wrap sm:gap-4">
               <Button
                 type="button"
                 variant="outline"
@@ -263,7 +263,11 @@ export function BookingForm() {
                 type="button"
                 disabled={!time}
                 className="w-full sm:w-auto"
-                onClick={() => setStep(3)}
+                onClick={() => {
+                  if (!time) return;
+                  setError(null);
+                  setStep(3);
+                }}
               >
                 Continue
               </Button>
@@ -299,7 +303,7 @@ export function BookingForm() {
               ))}
             </div>
 
-            <div className="flex flex-col-reverse gap-3 border-t border-gold/15 pt-6 sm:flex-row sm:flex-wrap sm:gap-4">
+            <div className="relative z-10 flex flex-col-reverse gap-3 border-t border-gold/15 pt-6 sm:flex-row sm:flex-wrap sm:gap-4">
               <Button
                 type="button"
                 variant="outline"
@@ -311,7 +315,10 @@ export function BookingForm() {
               <Button
                 type="button"
                 className="w-full sm:w-auto"
-                onClick={() => setStep(4)}
+                onClick={() => {
+                  setError(null);
+                  setStep(4);
+                }}
               >
                 Continue
               </Button>

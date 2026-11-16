@@ -69,7 +69,7 @@ export default function RootLayout({
       lang="en"
       className={`${josefin.variable} ${cormorant.variable} ${playfair.variable} ${greatVibes.variable} h-full antialiased`}
     >
-      <body className="luxury-grain flex min-h-full flex-col bg-background font-sans text-lg font-light text-foreground">
+      <body className="luxury-grain relative isolate flex min-h-full flex-col bg-background font-sans text-lg font-light text-foreground">
         {children}
       </body>
     </html>
