@@ -29,6 +29,6 @@
     "binding": "IMAGES"
   },
   "vars": {
-    "NEXT_PUBLIC_SITE_URL": "https://phokentish.duynguyen0106.workers.dev"
+    "NEXT_PUBLIC_SITE_URL": "https://phokentish.duydichdanh.workers.dev"
   }
 }
