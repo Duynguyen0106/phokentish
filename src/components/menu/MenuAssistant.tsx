@@ -149,7 +149,7 @@ export function MenuAssistant({ menuTab, branchLabel }: MenuAssistantProps) {
     setMessages([
       {
         role: "assistant",
-        content: `Showing the ${menuTab === "daily" ? "daily" : "lunch"} menu for ${branchLabel}. Try "What should I order first visit?" or ask about any dish by name.`,
+        content: `Showing the Pho Kentish menu for ${branchLabel}. Try "What should I order first visit?" or ask about any dish by name.`,
       },
     ]);
   }, [menuTab, branchLabel, cancelTyping]);
@@ -217,7 +217,7 @@ export function MenuAssistant({ menuTab, branchLabel }: MenuAssistantProps) {
                 Pho Kentish {branchLabel}
               </p>
               <p className="mt-1 text-sm text-muted">
-                {menuTab === "daily" ? "Daily menu" : "Lunch menu"} · AI-guided
+                Menu · AI-guided
               </p>
             </div>
             <button

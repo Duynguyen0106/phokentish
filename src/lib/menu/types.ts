@@ -38,7 +38,7 @@ export interface BranchMenu {
 }
 
 /** Bump when the printed/seed menu content changes so runtimes reseed. */
-export const MENU_CONTENT_VERSION = 20261117;
+export const MENU_CONTENT_VERSION = 20261118;
 
 export interface MenuData {
   contentVersion?: number;

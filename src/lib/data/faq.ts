@@ -40,7 +40,7 @@ export const faqCategories: { title: string; items: FaqItem[] }[] = [
       {
         question: "What are your opening hours?",
         answer:
-          "We are open Monday to Sunday, 11:30am – 9:30pm. Lunch specials are available on weekdays — see the menu for details.",
+          "We are open Monday to Sunday. Weekdays: 12:00pm – 3:30pm & 4:30pm – 9:30pm. Weekends: 12:00pm – 9:30pm.",
       },
       {
         question: "Do you cater for dietary requirements?",
@@ -65,7 +65,7 @@ export const faqCategories: { title: string; items: FaqItem[] }[] = [
       {
         question: "What is on the menu?",
         answer:
-          "We serve a full daily menu plus weekday lunch specials — pho, wok & grill, starters, and more. Browse the menu page or ask our menu helper about any dish.",
+          "We serve a full menu — pho, starters, wok & grill, jasmine rice dishes, vegetarian options, and more. Browse the menu page or ask our menu helper about any dish.",
       },
       {
         question: "Do you offer takeaway or delivery?",

@@ -59,7 +59,7 @@ function collectAllItems(branch: BranchMenu, menuType: MenuType) {
 
 function formatTaggedDishes(items: MenuItem[], limit = 8): string {
   if (items.length === 0) {
-    return "No dishes with this tag on the current menu tab — check the other tab (Daily/Lunch) or ask our team.";
+    return "No dishes with this tag on the menu — ask our team for alternatives.";
   }
   return items
     .slice(0, limit)

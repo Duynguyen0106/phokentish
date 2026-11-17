@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 import { MenuAssistant } from "@/components/menu/MenuAssistant";
@@ -327,17 +326,15 @@ export function MenuTabs({
   initialTab = "daily",
   menuAssistantEnabled = true,
 }: MenuTabsProps) {
-  const router = useRouter();
-  const [tab, setTab] = useState<MenuTab>(initialTab);
+  const [tab] = useState<MenuTab>("daily");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [dietaryFilter, setDietaryFilter] = useState<DietaryFilter>("all");
 
+  void initialTab;
+
   const activeBranch = branchMenu;
-  const categories = useMemo(
-    () => (tab === "daily" ? activeBranch.daily : activeBranch.lunch),
-    [activeBranch, tab],
-  );
+  const categories = useMemo(() => activeBranch.daily, [activeBranch]);
 
   const filteredCategories = useMemo(
     () => filterMenuCategories(categories, searchQuery, dietaryFilter),
@@ -357,23 +354,9 @@ export function MenuTabs({
   const isFiltering =
     searchQuery.trim().length > 0 || dietaryFilter !== "all";
 
-  const syncUrl = useCallback(
-    (menuTab: MenuTab) => {
-      const params = new URLSearchParams();
-      if (menuTab === "lunch") params.set("type", "lunch");
-      const query = params.toString();
-      router.replace(query ? `/menu?${query}` : "/menu", { scroll: false });
-    },
-    [router],
-  );
-
-  useEffect(() => {
-    syncUrl(tab);
-  }, [tab, syncUrl]);
-
   useEffect(() => {
     setActiveCategory(filteredCategories[0]?.id ?? null);
-  }, [filteredCategories, tab]);
+  }, [filteredCategories]);
 
   useEffect(() => {
     const ids = filteredCategories.map((c) => c.id);
@@ -413,35 +396,10 @@ export function MenuTabs({
       <div className="sticky top-[var(--site-header-height)] z-30 -mx-6 min-w-0 overflow-hidden border-b border-gold/10 bg-background/95 px-6 py-3 backdrop-blur-xl sm:-mx-0 sm:py-4">
         <div className="mx-auto min-w-0 max-w-5xl space-y-3 sm:space-y-4">
           <div className="flex items-center justify-between gap-3">
-            <div
-              role="tablist"
-              aria-label="Menu type"
-              className="fine-dining-panel inline-flex shrink-0"
-            >
-              {(
-                [
-                  { id: "daily" as const, label: "Daily" },
-                  { id: "lunch" as const, label: "Lunch" },
-                ] as const
-              ).map(({ id, label }) => (
-                <button
-                  key={id}
-                  type="button"
-                  role="tab"
-                  aria-selected={tab === id}
-                  onClick={() => setTab(id)}
-                  className={cn(
-                    "min-h-11 px-5 py-3 text-sm font-medium uppercase tracking-[0.1em] transition sm:px-8 sm:py-3.5 sm:text-base",
-                    tab === id
-                      ? "bg-gold text-white"
-                      : "text-muted hover:text-foreground",
-                  )}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-            <p className="hidden text-sm text-muted sm:block">
+            <p className="text-sm font-medium uppercase tracking-[0.12em] text-gold">
+              Menu
+            </p>
+            <p className="text-sm text-muted">
               {isFiltering ? (
                 <>
                   <span className="text-gold">{filteredItemCount}</span> of{" "}
@@ -509,7 +467,7 @@ export function MenuTabs({
             <p className="text-lg text-muted">
               <span className="text-foreground">Pho Kentish {branchLabel}</span>
               {" · "}
-              {tab === "daily" ? "Daily menu" : "Lunch menu"}
+              Full menu
             </p>
             {isFiltering && (
               <button
@@ -556,13 +514,7 @@ export function MenuTabs({
           </div>
         </div>
 
-        {tab === "lunch" && activeBranch.lunchNote && (
-          <p className="mt-6 text-center text-lg text-muted">
-            {activeBranch.lunchNote}
-          </p>
-        )}
-
-        <div className="mt-10 space-y-8" role="tabpanel">
+        <div className="mt-10 space-y-8">
           {filteredCategories.length === 0 ? (
             <div className="luxury-card px-8 py-16 text-center text-xl text-muted">
               {categories.length === 0

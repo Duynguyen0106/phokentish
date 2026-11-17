@@ -507,80 +507,9 @@ export const dailyMenuCategories: MenuCategory[] = [
   },
 ];
 
-export const lunchMenuNote = "Mon – Fri, 11:45am – 4:00pm";
-
-/** Weekday lunch favourites drawn from the printed daily menu. */
-export const lunchMenuCategories: MenuCategory[] = [
-  {
-    id: "lunch-noodle-soup",
-    name: "Noodle Soup",
-    items: [
-      {
-        name: "Pho Bo Chin",
-        description: "Well cooked beef noodle soup",
-        price: "£13.00",
-      },
-      {
-        name: "Pho Ga",
-        description: "Chicken noodle soup",
-        price: "£13.00",
-      },
-      {
-        name: "Pho Chay",
-        description: "Flat rice noodles soup with tofu and vegetables",
-        price: "£12.00",
-        tags: ["Vegetarian", "Vegan"],
-      },
-    ],
-  },
-  {
-    id: "lunch-wok-grill",
-    name: "Wok & Grill",
-    items: [
-      {
-        name: "Pho Xao",
-        description:
-          "Wok stir-fried flat rice noodle with Asian vegetables (Chicken £12.50 · Beef £13.00 · King Prawns £14.50)",
-        price: "£12.50 – £14.50",
-      },
-      {
-        name: "Bun",
-        description:
-          "Vermicelli mix with wok stir-fried vegetables served with nuoc cham sauce (Chicken £12.50 · Pork Spring Rolls £12.50 · Beef £13.00 · King Prawns £14.50)",
-        price: "£12.50 – £14.50",
-      },
-      {
-        name: "Bun Ga Nuong",
-        description: "Vermicelli with grilled chicken thighs",
-        price: "£13.50",
-      },
-    ],
-  },
-  {
-    id: "lunch-jasmine-rice",
-    name: "Jasmine Rice",
-    items: [
-      {
-        name: "Com Ca Ri",
-        description:
-          "Jasmine rice with Vietnamese curry and vegetables (Chicken £12.50 · Beef £13.00 · King Prawns £14.00)",
-        price: "£12.50 – £14.00",
-      },
-      {
-        name: "Com Chien",
-        description:
-          "Vietnamese wok fried rice served with vegetable and soya sauce (Chicken £12.50 · Beef £13.00 · King Prawns £14.00)",
-        price: "£12.50 – £14.00",
-      },
-      {
-        name: "Com Sot Xoai",
-        description:
-          "Jasmine rice served with mango sauce (Chicken £11.50 · Prawn £13.00)",
-        price: "£11.50 – £13.00",
-      },
-    ],
-  },
-];
+/** Lunch menu removed — kept empty for schema compatibility. */
+export const lunchMenuNote = "";
+export const lunchMenuCategories: MenuCategory[] = [];
 
 /** @deprecated use dailyMenuCategories */
 export const menuCategories = dailyMenuCategories;

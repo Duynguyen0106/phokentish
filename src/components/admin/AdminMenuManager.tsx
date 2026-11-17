@@ -11,8 +11,6 @@ import type {
   MenuType,
   MenuVariant,
 } from "@/lib/menu/types";
-import { cn } from "@/lib/utils";
-
 async function menuAction(body: Record<string, unknown>) {
   const res = await fetch("/api/admin/menu", {
     method: "POST",
@@ -48,40 +46,10 @@ function draftToVariants(drafts: VariantDraft[]) {
     }));
 }
 
-function AdminTabGroup<T extends string>({
-  value,
-  onChange,
-  options,
-}: {
-  value: T;
-  onChange: (v: T) => void;
-  options: { value: T; label: string }[];
-}) {
-  return (
-    <div className="inline-flex flex-wrap gap-2 rounded border border-gold/20 bg-surface-alt/60 p-1.5">
-      {options.map((opt) => (
-        <button
-          key={opt.value}
-          type="button"
-          onClick={() => onChange(opt.value)}
-          className={cn(
-            "min-h-11 rounded px-5 py-3 text-lg transition",
-            value === opt.value
-              ? "bg-gold text-background"
-              : "text-muted hover:bg-gold/10 hover:text-foreground",
-          )}
-        >
-          {opt.label}
-        </button>
-      ))}
-    </div>
-  );
-}
-
 export function AdminMenuManager() {
   const [menu, setMenu] = useState<MenuData | null>(null);
   const locationSlug: MenuLocationSlug = "kentish-town";
-  const [menuType, setMenuType] = useState<MenuType>("daily");
+  const menuType: MenuType = "daily";
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -308,7 +276,7 @@ export function AdminMenuManager() {
           Menu management
         </h2>
         <p className="mt-2 text-xl text-muted">
-          Edit daily and lunch menus for Pho Kentish
+          Edit the Pho Kentish menu
         </p>
       </div>
 
@@ -322,65 +290,13 @@ export function AdminMenuManager() {
       )}
 
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <AdminTabGroup
-          value={menuType}
-          onChange={setMenuType}
-          options={[
-            { value: "daily" as const, label: "Daily menu" },
-            { value: "lunch" as const, label: "Lunch menu" },
-          ]}
-        />
+        <p className="text-sm font-medium uppercase tracking-[0.12em] text-gold">
+          Full menu
+        </p>
         <Button size="md" onClick={handleAddCategory} disabled={saving}>
           Add category
         </Button>
       </div>
-
-      {menuType === "lunch" && menu && branchMenu && (
-        <div className="luxury-card p-6">
-          <label className="block">
-            <span className="label-caps">Lunch hours note</span>
-            <div className="mt-3 flex flex-wrap gap-3">
-              <input
-                value={branchMenu.lunchNote}
-                onChange={(e) =>
-                  setMenu({
-                    ...menu,
-                    branches: {
-                      ...menu.branches,
-                      [locationSlug]: {
-                        ...branchMenu,
-                        lunchNote: e.target.value,
-                      },
-                    },
-                  })
-                }
-                className="luxury-input min-w-[240px] flex-1"
-              />
-              <Button
-                size="md"
-                variant="outline"
-                disabled={saving}
-                onClick={async () => {
-                  setSaving(true);
-                  try {
-                    await menuAction({
-                      action: "updateLunchNote",
-                      locationSlug,
-                      note: branchMenu.lunchNote,
-                    });
-                  } catch (e) {
-                    setError(e instanceof Error ? e.message : "Update failed");
-                  } finally {
-                    setSaving(false);
-                  }
-                }}
-              >
-                Save note
-              </Button>
-            </div>
-          </label>
-        </div>
-      )}
 
       <div className="space-y-4">
         {categories.length === 0 ? (

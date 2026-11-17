@@ -91,7 +91,7 @@ function formatDishDetail(
 
 function formatItemList(items: MenuItem[], limit = 6): string {
   if (items.length === 0) {
-    return "I couldn't find matching dishes on this menu tab. Try switching between Daily and Lunch at the top of the page.";
+    return "I couldn't find matching dishes on the menu. Try another name or ask about pho, starters, or vegetarian options.";
   }
   const lines = items.slice(0, limit).map(formatItemLine);
   if (items.length > limit) {
@@ -302,13 +302,8 @@ const PREPARED_TOPICS: PreparedTopic[] = [
     minScore: 2,
     answer: (ctx) => {
       const branch = getBranchMenu(ctx.menu, ctx.locationSlug);
-      const lunch =
-        ctx.menuType === "lunch" && branch.lunchNote
-          ? `\n\nLunch menu note: ${branch.lunchNote}`
-          : "\n\nWeekday lunch specials are on the Lunch tab — switch at the top of the menu page.";
       return (
-        `Pho Kentish is open Monday to Sunday, 11:30am – 9:30pm.` +
-        lunch +
+        `Pho Kentish is open Monday to Sunday. Weekdays: 12:00pm – 3:30pm & 4:30pm – 9:30pm. Weekends: 12:00pm – 9:30pm.` +
         `\n\nAddress: ${location.address}, ${location.postcode}. Phone: ${location.phone}.`
       );
     },
@@ -354,22 +349,8 @@ const PREPARED_TOPICS: PreparedTopic[] = [
     ],
     keywords: ["lunch"],
     minScore: 2,
-    answer: (ctx) => {
-      const branch = getBranchMenu(ctx.menu, ctx.locationSlug);
-      if (ctx.menuType === "lunch") {
-        const count = branch.lunch.reduce((n, c) => n + c.items.length, 0);
-        return (
-          `You're viewing our lunch menu (${count} dishes).` +
-          (branch.lunchNote ? ` ${branch.lunchNote}` : "") +
-          `\n\nLunch specials are typically available on weekdays. For our full à la carte selection, switch to the Daily tab at the top of the menu.`
-        );
-      }
-      return (
-        `Weekday lunch specials are on the Lunch tab at the top of this page.` +
-        (branch.lunchNote ? ` ${branch.lunchNote}` : "") +
-        `\n\nYou're currently on the daily menu. Tap Lunch to see lunch-only dishes and prices.`
-      );
-    },
+    answer: () =>
+      "We serve one full menu all day — there is no separate lunch menu. Browse the menu page for pho, starters, wok & grill, jasmine rice, and vegetarian dishes.",
   },
   {
     id: "banh-xeo",
@@ -566,7 +547,7 @@ const PREPARED_TOPICS: PreparedTopic[] = [
       return (
         `On the ${menuLabel(ctx.menuType)}, most dishes range from ${formatPricePence(min)} to ${formatPricePence(max)} depending on protein or portion.\n\n` +
         `Popular choices include:\n${formatItemList(signatures, 3)}\n\n` +
-        `Prices are shown next to each dish on the menu. Switch Daily / Lunch tabs to compare.`
+        `Prices are shown next to each dish on the menu.`
       );
     },
   },

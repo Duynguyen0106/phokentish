@@ -9,14 +9,7 @@ export const metadata: Metadata = {
     "Browse the Pho Kentish menu — pho, starters, wok & grill, rice dishes, and drinks in Kentish Town.",
 };
 
-interface MenuPageProps {
-  searchParams: Promise<{ type?: string }>;
-}
-
-export default async function MenuPage({ searchParams }: MenuPageProps) {
-  const params = await searchParams;
-  const initialTab = params.type === "lunch" ? "lunch" : "daily";
-
+export default async function MenuPage() {
   const [menu, settings] = await Promise.all([getMenu(), getSiteSettings()]);
   const branchMenu = menu.branches["kentish-town"];
 
@@ -34,7 +27,7 @@ export default async function MenuPage({ searchParams }: MenuPageProps) {
           </p>
           <div className="gold-line mx-auto mt-6 w-20 sm:mt-8" />
           <p className="mt-6 text-sm text-muted">
-            Pho Kentish · Kentish Town · Daily menu
+            Pho Kentish · Kentish Town
           </p>
         </div>
       </section>
@@ -42,7 +35,6 @@ export default async function MenuPage({ searchParams }: MenuPageProps) {
       <div className="section-pad mx-auto min-w-0 max-w-6xl overflow-x-hidden py-6 pb-24 sm:py-16 sm:pb-16">
         <MenuTabs
           branchMenu={branchMenu}
-          initialTab={initialTab}
           menuAssistantEnabled={settings.features.menuAssistantEnabled}
         />
       </div>
