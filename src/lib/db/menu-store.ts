@@ -8,7 +8,7 @@ import {
   createServerClient,
   isSupabaseConfigured,
 } from "../supabase/client";
-import { MENU_LOCATION_SLUGS } from "@/lib/menu/types";
+import { MENU_CONTENT_VERSION, MENU_LOCATION_SLUGS } from "@/lib/menu/types";
 import type {
   BranchMenu,
   CreateMenuCategoryInput,
@@ -141,7 +141,7 @@ function findItem(
 }
 
 export async function getMenu(): Promise<MenuData> {
-  if (menuCache) return menuCache;
+  if (menuCache?.contentVersion === MENU_CONTENT_VERSION) return menuCache;
 
   let menu: MenuData | null = null;
   if (useSupabase()) {
@@ -150,7 +150,7 @@ export async function getMenu(): Promise<MenuData> {
     menu = await readLocalMenu();
   }
 
-  if (!menu) {
+  if (!menu || menu.contentVersion !== MENU_CONTENT_VERSION) {
     menu = buildSeedMenu();
     await persistMenu(menu);
   }

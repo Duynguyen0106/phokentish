@@ -21,207 +21,178 @@ export const dailyMenuCategories: MenuCategory[] = [
     name: "STARTERS",
     items: [
       {
-        name: "★ Special Platter for 2 People",
-        description: "Crispy Pork Spring Rolls, Seafood Springs Rolls, King Prawns Summer Rolls, Salt & Pepper Squid, Salt & Pepper King Prawns, and Mango Salad", price: "£41", tags: ["Gluten free", "Mild"], featured: true,
-      },
-      {
-        name: "★ Special Platter for 3 People",
-        description: "Crispy Pork Spring Rolls, Seafood Spring Rolls, King Prawns Summer Rolls, Chicken Summer Rolls, Salt & Pepper Squid, Grilled King Prawns, Salt & Pepper Chicken, and King Prawn Mango Salad", price: "£57", tags: ["Gluten free", "Mild"], featured: true,
-      },
-      {
         name: "S01 Nem Thit (3 Rolls)",
-        description: "Crispy Pork Spring Roll Served with Nuoc Cham Sauce", price: "£7.50", tags: ["Gluten free"],
+        description: "Crispy pork spring rolls served with nuoc cham sauce",
+        price: "£7.50",
       },
       {
         name: "S02 Nem Hai San (2 Rolls)",
-        description: "Crispy Crab, Prawn and Pork Spring Roll served with Nuoc Cham Sauce", price: "£8.50", tags: ["Gluten free"],
+        description:
+          "Crispy crab, prawn and pork spring rolls served with nuoc cham sauce",
+        price: "£8.00",
       },
       {
-        name: "S03 Goi Cuon Ga",
-        description: "Chicken Summer Roll Served with Peanut Sauce", price: "£7.50", tags: ["Gluten free"],
+        name: "S03 Nem Rau (3 Rolls)",
+        description: "Crispy vegetable spring rolls served with soya sauce",
+        price: "£7.00",
+        tags: ["Vegetarian", "Vegan"],
       },
       {
-        name: "S04 Goi Cuon Tom",
-        description: "King Prawn Summer Roll Served with Peanut Sauce", price: "£8", tags: ["Gluten free"],
+        name: "S04 Goi Cuon Ga (2 Rolls)",
+        description: "Chicken summer rolls served with peanut sauce",
+        price: "£7.50",
       },
       {
-        name: "S05 Canh Ga Chien",
-        description: "Vietnamese Golden Chicken Wings Served with Chilli Sauce", price: "£9", tags: ["Gluten free", "Mild"],
+        name: "S05 Goi Cuon Tom (2 Rolls)",
+        description: "King prawn summer rolls served with peanut sauce",
+        price: "£8.00",
       },
       {
-        name: "S06 Banh Xeo",
-        description: "Vietnamese Crispy Prawn & Chicken Crepe Served with Nuoc Cham Sauce", price: "£14", tags: ["Gluten free"],
+        name: "S06 Goi Cuon Rau (2 Rolls)",
+        description: "Veggie summer rolls served with peanut sauce",
+        price: "£7.00",
+        tags: ["Vegetarian", "Vegan"],
       },
       {
-        name: "S07 Muc Muoi",
-        description: "Salt and Pepper Squid Served with Sweet Chilli Sauce", price: "£10", tags: ["Gluten free", "Mild"],
+        name: "S07 Canh Ga Chien",
+        description: "Vietnamese golden chicken wings served with chilli sauce",
+        price: "£8.00",
+        tags: ["Mild"],
       },
       {
-        name: "S08 Tom Muoi",
-        description: "Salt and Pepper King Prawns Served with Sweet Chilli Sauce", price: "£10", tags: ["Gluten free", "Mild"],
+        name: "S08 Banh Xeo",
+        description:
+          "Vietnamese crispy prawn and chicken crepe served with nuoc cham sauce",
+        price: "£13.00",
       },
       {
-        name: "S09 Ga Muoi",
-        description: "Salt and Pepper Chicken Served with Sweet Chilli Sauce", price: "£9.50", tags: ["Gluten free", "Mild"],
+        name: "S08A Banh Xeo Chay",
+        description:
+          "Vietnamese crispy vegetarian crepe served with soya sauce",
+        price: "£12.50",
+        tags: ["Vegetarian", "Vegan"],
       },
       {
-        name: "S10A Banh Cuon Thit",
-        description: "Vietnamese Pork Steam Rice Rolls Served with Nuoc Cham Sauce", price: "£14", tags: ["Gluten free"],
+        name: "S09 Muc Muoi",
+        description: "Salt and pepper squid served with sweet chilli sauce",
+        price: "£10.00",
+        tags: ["Mild"],
       },
       {
-        name: "S10B Banh Cuon Thit Nuong",
-        description: "Vietnamese Pork Steam Rolls Served with Vietnamese Grilled Pork and Nuoc Cham Sauce", price: "£15", tags: ["Gluten free"],
+        name: "S10 Tom Chien Xu",
+        description: "Crispy butterfly prawns served with sweet chilli sauce",
+        price: "£8.00",
+        tags: ["Mild"],
       },
       {
-        name: "S11 Bo Cuon La Lot",
-        description: "Beef Wrapped In Betel Leaves Served with Salad, Vermicelli, and Nuoc Cham Sauce", price: "£13.50", tags: ["Gluten free"],
+        name: "S11 Stir-Fried Mixed Vegetables",
+        description: "Stir-fried seasonal vegetables",
+        price: "£7.50",
+        tags: ["Vegetarian", "Vegan"],
       },
       {
-        name: "S12 Thit Heo Nuong Xien",
-        description: "Grilled Pork Marinated with Galangal, Lemongrass, Dipping with House Special Sauce", price: "£13", tags: ["Gluten free"],
+        name: "S12 Banh Phong Tom",
+        description: "Prawn cracker",
+        price: "£3.50",
       },
-      {
-        name: "S14 Tom Nuong",
-        description: "Grilled King Prawns Dipping with House Special Sauce", price: "£13", tags: ["Gluten free"],
-      },
-      {
-        name: "Prawn Cracker",
-        description: "Served with Sweet Chilli Sauce", price: "£3", tags: ["Gluten free", "Mild"],
-      },
-      {
-        name: "Chim Cut Nuong",
-        description: "Grilled Quail Marinated with Lemongrass Served with Pho Kentish Special Sauce", price: "£13.50", tags: ["Gluten free"],
-      },
-      {
-        name: "Ga Sa Te",
-        description: "Sliced Fried Chicken with Sate Sauce with Peanuts on Top", price: "£10",
-      }
     ],
   },
   {
-    id: "daily-vietnamese-nom-salad",
-    name: "VIETNAMESE NOM SALAD",
+    id: "daily-vietnamese-salad",
+    name: "VIETNAMESE SALAD",
     items: [
       {
-        name: "Nom Du Du",
-        description: "Papaya Salad Served with Homemade Dressing (Dried Beef £14 · King Prawns £14.50 · Chicken £13.50)", price: "£13.5 – £14.5",
+        name: "N01 Nom Ga (Chicken Salad)",
+        description: "Chicken salad served with homemade dressing",
+        price: "£10.50",
       },
       {
-        name: "Nom Xoai",
-        description: "Mango Salad Served with Homemade Dressing (Beef £14 · King Prawns £14.50 · Chicken £13.50)", price: "£13.5 – £14.5",
+        name: "N02 Nom Rau (Vegetables Salad)",
+        description: "Vegetables mixed with herbs served with homemade dressing",
+        price: "£9.50",
+        tags: ["Vegetarian", "Vegan"],
       },
       {
-        name: "Bo Tai Chanh",
-        description: "Rare Beef Salad Served with Lime Juice", price: "£15",
+        name: "N03 Nom Tom (King Prawn Salad)",
+        description:
+          "Vegetables mixed with herbs and king prawns served with homemade dressing",
+        price: "£11.50",
       },
       {
-        name: "Nom Ga",
-        description: "Chicken Salad Served with Homemade Dressing", price: "£13.50",
+        name: "N04 Nom Bo Du Du (Papaya Dried Beef Salad)",
+        description:
+          "Papaya mixed with herbs and dried beef served with homemade dressing",
+        price: "£12.00",
       },
       {
-        name: "Nom Tom",
-        description: "King Prawns Salad Served with Homemade Dressing", price: "£14.50",
-      }
+        name: "N05 Nom Tom Du Du (Papaya King Prawns Salad)",
+        description:
+          "Papaya mixed with herbs and king prawns served with homemade dressing",
+        price: "£12.00",
+      },
     ],
   },
   {
-    id: "daily-chef-s-special-menu",
-    name: "CHEF’s SPECIAL MENU",
-    items: [
-      {
-        name: "Ca Rang Muoi",
-        description: "Fried Seabass Fish with Chilli Lemongrass", price: "£22",
-      },
-      {
-        name: "Cha Ca Ha Noi",
-        description: "Monk Fish Served with Dill, Onion, Pickle, Vermicelli, and House Fish Sauce", price: "£21", tags: ["Gluten free"],
-      },
-      {
-        name: "Ca Xoai",
-        description: "Deep Fried Seabass Served with Mango Fish Sauce and Steam Rice On The Side", price: "£22", tags: ["Gluten free"],
-      },
-      {
-        name: "Bo Luc Lac",
-        description: "Cube Beef Marinated with House Special Sauce and Seasame on Top", price: "£16", tags: ["Gluten free"],
-      },
-      {
-        name: "★ Hanh Gung Sizzling",
-        description: "Onion and Ginger Sizzling (Beef £17 · Chicken £17 · King Prawns £17.50 · Duck £17.50 · Tofu (V) £16)", price: "£16 – £17.5", tags: ["Gluten free", "Mild"], featured: true,
-      },
-      {
-        name: "★ Black Bean Sauce Sizzling",
-        description: "Sizzling Stir-Fried with Pho Kentish Black Bean Sauce Served with Rice (Chicken £17 · Beef £17 · King Prawn £17.50 · Tofu £16)", price: "£16 – £17.5", tags: ["Gluten free"], featured: true,
-      },
-      {
-        name: "Lan Sizzling",
-        description: "Stir Fried Duck with Galangal, Shrimp Paste and Chilli Lemongrass (Chicken £17 · Beef £17 · King Prawn £17.50 · Duck £17.50 · Tofu £16)", price: "£16 – £17.5", tags: ["Gluten free", "Mild"],
-      },
-      {
-        name: "Com Thit Kho",
-        description: "Slow-cooked Braised Pork Belly with Coconut Water", price: "£13", tags: ["Gluten free"],
-      },
-      {
-        name: "Dau Phu Xao Ca Tim Tofu",
-        description: "Stir Fried Tofu & Aubergine", price: "£17", tags: ["Gluten free", "Vegetarian", "Vegan"],
-      },
-      {
-        name: "Rau Xao Thap Cam",
-        description: "Stir-fired Mixed Vegetables served with Rice (Chicken £16 · Beef £16 · King Prawn £17)", price: "£16 – £17",
-      }
-    ],
-  },
-  {
-    id: "daily-main-courses-pho-soup-style",
-    name: "MAIN COURSES PHO SOUP STYLE",
+    id: "daily-main-course-soup",
+    name: "MAIN COURSE SOUP",
     items: [
       {
         name: "★ M01 Pho Bo Tai",
-        description: "Rare Steak Beef Noodle Soup", price: "£15", tags: ["Gluten free"], featured: true,
+        description: "Rare steak beef noodle soup",
+        price: "£14.00",
+        featured: true,
       },
       {
         name: "M02 Pho Bo Chin",
-        description: "Well Cooked Beef Noodle Soup", price: "£14", tags: ["Gluten free"],
+        description: "Well cooked beef noodle soup",
+        price: "£13.00",
       },
       {
         name: "M03 Pho Bo Vien",
-        description: "Beef Ball Noodle Soup", price: "£14", tags: ["Gluten free"],
+        description: "Beef ball noodle soup",
+        price: "£13.50",
       },
       {
-        name: "M04 Pho Kentishi Lan",
-        description: "Stir Fried Beef Noodle Soup", price: "£15.50", tags: ["Gluten free"],
+        name: "M04 Pho Tai Lan",
+        description: "Stir-fried beef noodle soup",
+        price: "£14.50",
       },
       {
         name: "M05 Pho Bo Sot Vang",
-        description: "Stewed Beef in Red Wine Noodle Soup", price: "£16.50", tags: ["Gluten free"],
+        description: "Stewed beef in red wine noodle soup",
+        price: "£14.50",
       },
       {
-        name: "★ M06 Combo Pho",
-        description: "Prawn, Chicken, and Stir Fried Beef Noodle Soup", price: "£16.50", tags: ["Gluten free"], featured: true,
+        name: "★ M06 Pho Dac Biet",
+        description: "Prawn, chicken and stir-fried beef noodle soup",
+        price: "£15.00",
+        featured: true,
       },
       {
         name: "M07 Pho Ga",
-        description: "Chicken Noodle Soup", price: "£14", tags: ["Gluten free"],
+        description: "Chicken noodle soup",
+        price: "£13.00",
       },
       {
         name: "M08 Pho Tom",
-        description: "King Prawns Noodle Soup", price: "£16", tags: ["Gluten free"],
+        description: "King prawns noodle soup",
+        price: "£14.50",
       },
       {
         name: "★ M09 Special Pho Kentish Mixed Beef",
-        description: "Meat Balls, Rare Steak, and Well Cooked Beef Noodle Soup", price: "£16.50", tags: ["Gluten free"], featured: true,
+        description:
+          "Meat balls, rare steak and well cooked beef noodle soup",
+        price: "£15.00",
+        featured: true,
       },
       {
         name: "★ M10 Bun Hue",
-        description: "Spicy Vermicelli Soup (Beef £15.50 · Chicken £15 · King Prawn £17.50 · Duck £17.50)", price: "£15 – £17.5", tags: ["Gluten free", "Mild"], featured: true,
+        description:
+          "Spicy vermicelli noodle soup (Chicken £13.50 · Beef £14.50 · King Prawn £15.50)",
+        price: "£13.50 – £15.50",
+        tags: ["Mild"],
+        featured: true,
       },
-      {
-        name: "★ M11 Bun Ca",
-        description: "Monk Fish Vermicelli Soup", price: "£17.50", tags: ["Gluten free"], featured: true,
-      },
-      {
-        name: "M12 Pho Vit",
-        description: "Crispy Roasted Duck Noodle Soup", price: "£17.50", tags: ["Gluten free"],
-      }
     ],
   },
   {
@@ -229,181 +200,316 @@ export const dailyMenuCategories: MenuCategory[] = [
     name: "WOK AND GRILL",
     items: [
       {
-        name: "M13A Pho Xao",
-        description: "Wok Stir Fried Flat Rice Noodle with Asian Vegetables (Chicken £14 · Beef £14.50 · King Prawn £14.50)", price: "£14 – £14.5", tags: ["Gluten free"],
+        name: "M11 Pho Xao",
+        description:
+          "Wok stir-fried flat rice noodle with Asian vegetables (Chicken £12.50 · Beef £13.00 · King Prawns £14.50)",
+        price: "£12.50 – £14.50",
       },
       {
-        name: "M13B Mi Xao",
-        description: "Wok Stir Fried Egg Noodle with Asian Vegetables (Chicken £14 · Beef £14.50 · King Prawn £16 · Duck £17.50)", price: "£14 – £17.5",
+        name: "M12 Bun",
+        description:
+          "Vermicelli mix with wok stir-fried vegetables served with nuoc cham sauce (Chicken £12.50 · Pork Spring Rolls £12.50 · Beef £13.00 · King Prawns £14.50)",
+        price: "£12.50 – £14.50",
       },
       {
-        name: "M14 Bun",
-        description: "Vermicelli Mix with Wok Stir Fried Vegetables Served with Nuoc Cham Sauce (Chicken £14 · Pork Spring Rolls £14 · Beef £14.50 · King Prawn £16)", price: "£14 – £16", tags: ["Gluten free"],
+        name: "★ M13 Bun Ga Nuong",
+        description: "Vermicelli with grilled chicken thighs",
+        price: "£13.50",
+        featured: true,
       },
       {
-        name: "M15 Bun Ga Nuong",
-        description: "Grilled Chicken Thighs Vermicelli", price: "£16", tags: ["Gluten free"],
+        name: "★ M14 Bun Cha",
+        description:
+          "Vermicelli with grilled mixed pork belly and vegetables spring rolls",
+        price: "£14.00",
+        featured: true,
       },
-      {
-        name: "M16 Bun Cha",
-        description: "Vermicelli with Grilled Mix Pork Belly & Spring Roll", price: "£16.50", tags: ["Gluten free"],
-      },
-      {
-        name: "Bun Vit Nuong",
-        description: "Vermicelli with Grilled Duck Served with Vegetables & Nuoc Cham Sauce", price: "£17.50", tags: ["Gluten free"],
-      },
-      {
-        name: "Bun Bo La Lot",
-        description: "Beef Wrapped in Betel Leaves Vermicelli Served with Vegetables & Nuoc Cham Sauce", price: "£17.50",
-      },
-      {
-        name: "Bun Thit Nuong",
-        description: "Grilled Pork Vermicelli Served with Vegetables & Nuoc Cham Sauce", price: "£15",
-      },
-      {
-        name: "Bun Thit Nuong Cha Gio",
-        description: "Grilled Pork, Pork Spring Roll Vermicelli Served with Vegetables & Nuoc Cham Sauce", price: "£17",
-      }
     ],
   },
   {
-    id: "daily-vietnamese-broken-rice",
-    name: "VIETNAMESE BROKEN RICE",
+    id: "daily-jasmine-rice",
+    name: "JASMINE RICE",
     items: [
       {
-        name: "★ M17 Com Ga Nuong",
-        description: "Broken Rice with Grilled Chicken Thighs Served with Vegetables & Nuoc Cham Sauce", price: "£16", tags: ["Gluten free"], featured: true,
+        name: "M15 Com Ga Nuong",
+        description:
+          "Jasmine rice with grilled chicken thighs served with vegetables and nuoc cham sauce",
+        price: "£13.50",
       },
       {
-        name: "M18 Com Sot Vang",
-        description: "Broken Rice with Vietnamese Red Wine Beef Stew", price: "£16", tags: ["Gluten free"],
+        name: "M16 Com Sot Vang",
+        description: "Jasmine rice with Vietnamese red wine beef stew",
+        price: "£14.00",
       },
       {
-        name: "★ M19 Com Chien",
-        description: "Vietnamese Wok Fried Rice Served with Vegetables & Soya Sauce (Chicken £14 · Beef £14.50 · King Prawn £16 · Duck £17.50 · Pho Kentish Special (Chicken & Prawn) £17.50)", price: "£14 – £17.5", tags: ["Gluten free"], featured: true,
+        name: "M17 Com Chien",
+        description:
+          "Vietnamese wok fried rice served with vegetable and soya sauce (Chicken £12.50 · Beef £13.00 · King Prawns £14.00)",
+        price: "£12.50 – £14.00",
       },
       {
-        name: "M20 Com Ca Ri",
-        description: "Broken Rice with Vietnamese Curry & Vegetables (Chicken £14 · Beef £14.50 · King Prawns £16 · Duck £17.50)", price: "£14 – £17.5", tags: ["Gluten free"],
+        name: "M18 Com Ca Ri",
+        description:
+          "Jasmine rice with Vietnamese curry and vegetables (Chicken £12.50 · Beef £13.00 · King Prawns £14.00)",
+        price: "£12.50 – £14.00",
       },
       {
-        name: "M21 Com Suon Nuong",
-        description: "Vietnamese Grilled Pork Chop & Egg Cake Served with Nuoc Cham Sauce", price: "£15", tags: ["Gluten free"],
+        name: "M19 Com Suon Nuong",
+        description:
+          "Vietnamese grilled pork chop and fried egg served with nuoc cham sauce",
+        price: "£13.50",
       },
       {
-        name: "Com Sa Ot",
-        description: "Vietnamese Wok Lemongrass Chilli Rice (Chicken £12.50 · Beef £13.50 · King Prawns £14.50)", price: "£12.5 – £14.5", tags: ["Gluten free", "Mild"],
+        name: "★ M20 Pork Belly Stew with Rice",
+        description: "Slow-cooked pork belly stew served with jasmine rice",
+        price: "£13.00",
+        featured: true,
       },
       {
-        name: "★ Com Chien Pho Kentish",
-        description: "Pho Kentish Spicy Fried Rice with Vegetables & Soya Sauce (Chicken £15 · Beef £15.50 · King Prawn £17 · Duck £17.50 · Pho ta Special (Chicken & Prawn) £17.50)", price: "£15 – £17.5", tags: ["Mild"], featured: true,
+        name: "★ M21 Com Sot Xoai",
+        description:
+          "Jasmine rice served with mango sauce (Chicken £11.50 · Prawn £13.00)",
+        price: "£11.50 – £13.00",
+        featured: true,
       },
-      {
-        name: "M21B Com Ga Satay",
-        description: "Broken Rice with Chicken Satay Served with Vegetables & Satay Sauce", price: "£16",
-      },
-      {
-        name: "Com Chien Dua Bo",
-        description: "Wok Fried Rice with Beef and Vietnamese Pickle", price: "£17.50",
-      },
-      {
-        name: "Com Vit Nuong",
-        description: "Broken Rice with Grilled Duck Served with Vegetables", price: "£17.50",
-      },
-      {
-        name: "Com Thit Kho",
-        description: "Slow-cooked Braised Pork Belly with Coconut Water", price: "£15",
-      }
     ],
   },
   {
-    id: "daily-vegeterian-menu",
-    name: "VEGETERIAN MENU",
+    id: "daily-kids-corner",
+    name: "KID’S CORNER",
+    note: "For children under 15 years old",
     items: [
       {
-        name: "V01 Nem Rau",
-        description: "Crispy Vegetable Spring Rolls served with Nuoc Cham sauce", price: "£7", tags: ["Gluten free", "Vegetarian", "Vegan"],
+        name: "K01 Kids Curry with Rice or Vermicelli",
+        description: "Vegetables £7.50 · Chicken £7.50 · King Prawns £8.00",
+        price: "£7.50 – £8.00",
       },
       {
-        name: "V02 Goi Cuon Rau",
-        description: "Veggie Summer Roll Served with Peanut Sauce", price: "£7", tags: ["Gluten free", "Vegetarian", "Vegan"],
+        name: "K02 Kids Egg Fried Rice",
+        description: "Vegetables £7.50 · Chicken £7.50 · King Prawns £8.00",
+        price: "£7.50 – £8.00",
       },
       {
-        name: "V03 Nom Xoai Tofu",
-        description: "Mango Tofu Salad Served with Homemade Dressing", price: "£13.50", tags: ["Gluten free", "Vegetarian", "Vegan"],
+        name: "K03 Pho Chicken Noodle Soup",
+        description: "Chicken noodle soup for children",
+        price: "£8.00",
       },
       {
-        name: "V04 Nom Du Du Tofu",
-        description: "Papaya Tofu Salad Served with Homemade Dressing", price: "£13.50", tags: ["Gluten free", "Vegetarian", "Vegan"],
+        name: "K04 Wok Stir-Fried Flat Rice Noodles",
+        description:
+          "Vegetables & Tofu £7.50 · Chicken £7.50 · King Prawns £8.20",
+        price: "£7.50 – £8.20",
       },
       {
-        name: "V05 Banh Xeo Chay",
-        description: "Vietnamese Crispy Vegetarian Crepe Served with Soya Sauce", price: "£14", tags: ["Gluten free", "Vegetarian", "Vegan"],
+        name: "K05 Vermicelli with Stir-Fried Mix Beansprouts",
+        description:
+          "Vegetables & Tofu £7.00 · Chicken £7.00 · King Prawns £7.50",
+        price: "£7.00 – £7.50",
       },
-      {
-        name: "V06 Pho Chay",
-        description: "Mushrooms and Vegetable Noodle Soup", price: "£14", tags: ["Gluten free", "Vegetarian", "Vegan"],
-      },
-      {
-        name: "V07 Pho Xao Chay",
-        description: "Work Stir Fried Noodles with Asian Vegetables & Tofu", price: "£14", tags: ["Gluten free", "Vegetarian", "Vegan"],
-      },
-      {
-        name: "V08 Bun Nem Rau",
-        description: "Wok Stir Fried Vermicelli & Vegetable Spring Rolls", price: "£14", tags: ["Gluten free", "Vegetarian", "Vegan"],
-      },
-      {
-        name: "V09 Bun Dau Phu",
-        description: "Work Stir Fried Vermicelli with Tofu & Beansprouts", price: "£14", tags: ["Gluten free", "Vegetarian", "Vegan"],
-      },
-      {
-        name: "V10 Com Ca Ri Dau",
-        description: "Broken Rice Served with Vietnamese Vegetables & Tofu Curry", price: "£14", tags: ["Gluten free", "Vegetarian", "Vegan"],
-      },
-      {
-        name: "V11 Bun Ca Ri Tofu",
-        description: "Vermicelli Served with Vietnamese Vegetables & Tofu Curry", price: "£14", tags: ["Gluten free", "Vegetarian", "Vegan"],
-      },
-      {
-        name: "V12 Com Chien Chay",
-        description: "Vegetarian Wok Fried Rice Served with Vegetables & Tofu", price: "£14", tags: ["Gluten free", "Vegetarian"],
-      },
-      {
-        name: "V13 Ca Tim Rang Muoi",
-        description: "Salt and Pepper Aubergine Served with Sweet Chilli Sauce", price: "£10", tags: ["Gluten free", "Vegetarian", "Vegan"],
-      },
-      {
-        name: "V14 Dau Phu Rang Muoi",
-        description: "Salt and Pepper Tofu Served with Sweet Chilli Sauce", price: "£10", tags: ["Gluten free", "Vegetarian", "Vegan"],
-      }
     ],
   },
   {
-    id: "daily-kid-s-corner",
-    name: "KID’s CORNER",
+    id: "daily-vegetarian-menu",
+    name: "VEGETARIAN MENU",
     items: [
       {
-        name: "K01 Kid Curry with Rice",
-        description: "Vegetables & Tofu £7.50 · Chicken £7.50 · King Prawns £8 · Beef £8", price: "£7.5 – £8", tags: ["Gluten free"],
+        name: "★ V01 Pho Chay",
+        description: "Flat rice noodles soup with tofu and vegetables",
+        price: "£12.00",
+        tags: ["Vegetarian", "Vegan"],
+        featured: true,
       },
       {
-        name: "K02 Kid Egg Fried Rice",
-        description: "Vegetables & Tofu £7.50 · Chicken £7.50 · King Prawns £8", price: "£7.5 – £8", tags: ["Gluten free"],
+        name: "V02 Pho Xao Chay",
+        description: "Wok stir-fried flat rice noodle with tofu and vegetables",
+        price: "£12.00",
+        tags: ["Vegetarian", "Vegan"],
       },
       {
-        name: "Kid Stir Fried Noodle",
-        description: "Vegetables & Tofu £7.50 · Chicken £7.50 · King Prawns £8 · Beef £8", price: "£7.5 – £8", tags: ["Gluten free"],
+        name: "V03 Bun Nem Rau",
+        description:
+          "Vermicelli with crispy vegetable spring rolls served with nuoc cham sauce",
+        price: "£12.00",
+        tags: ["Vegetarian", "Vegan"],
       },
       {
-        name: "Kid Noodle Soup",
-        description: "Chicken £7.50 · Beef £8 · King Prawn £8.50 · Vegetables & Tofu £7.50", price: "£7.5 – £8.5", tags: ["Gluten free"],
-      }
+        name: "V04 Bun Dau Phu",
+        description:
+          "Vermicelli with tofu and vegetables served with nuoc cham sauce",
+        price: "£12.00",
+        tags: ["Vegetarian", "Vegan"],
+      },
+      {
+        name: "V05 Com Ca Ri Dau Hu",
+        description: "Jasmine rice with Vietnamese curry and tofu",
+        price: "£12.00",
+        tags: ["Vegetarian", "Vegan"],
+      },
+      {
+        name: "V06 Bun Ca Ri Tofu",
+        description: "Vermicelli with Vietnamese curry and tofu",
+        price: "£12.00",
+        tags: ["Vegetarian", "Vegan"],
+      },
+      {
+        name: "V07 Com Chien Chay",
+        description: "Vegetarian fried rice",
+        price: "£12.00",
+        tags: ["Vegetarian", "Vegan"],
+      },
+      {
+        name: "V08 Com Sot Xoai Tofu",
+        description: "Jasmine rice served with mango sauce and tofu",
+        price: "£12.00",
+        tags: ["Vegetarian", "Vegan"],
+      },
     ],
-  }
+  },
+  {
+    id: "daily-desserts",
+    name: "DESSERTS",
+    items: [
+      {
+        name: "Banh Chuoi Chien",
+        description: "Without ice cream",
+        price: "£6.00",
+        tags: ["Vegetarian"],
+      },
+      {
+        name: "Banh Chuoi Chien with Vanilla Ice Cream",
+        description: "With vanilla ice cream",
+        price: "£7.50",
+        tags: ["Vegetarian"],
+      },
+      {
+        name: "Ice Cream Vanilla",
+        description: "Vanilla ice cream",
+        price: "£4.00",
+        tags: ["Vegetarian"],
+      },
+    ],
+  },
+  {
+    id: "daily-soft-drinks",
+    name: "SOFT DRINKS",
+    items: [
+      {
+        name: "Fresh Juice",
+        description: "Apple / Orange / Pineapple / Carrot",
+        price: "£5.00",
+        tags: ["Vegan"],
+      },
+      {
+        name: "Tropical Mixed Juice",
+        description: "Mixed tropical fruit juice",
+        price: "£5.50",
+        tags: ["Vegan"],
+      },
+      {
+        name: "Soft Drinks",
+        description: "Coke / Diet Coke / 7Up / Fanta",
+        price: "£2.50",
+        tags: ["Vegan"],
+      },
+      {
+        name: "Jasmine Tea",
+        description: "Hot jasmine tea",
+        price: "£2.00",
+        tags: ["Vegan"],
+      },
+      {
+        name: "Sparkling or Still Water",
+        description: "Sparkling water or still water",
+        price: "£2.50",
+        tags: ["Vegan"],
+      },
+      {
+        name: "Homemade Lemonade",
+        description: "Fresh homemade lemonade",
+        price: "£5.00",
+        tags: ["Vegan"],
+      },
+      {
+        name: "Honey Ice Lemon Tea",
+        description: "Iced lemon tea with honey",
+        price: "£5.00",
+        tags: ["Vegetarian"],
+      },
+    ],
+  },
+  {
+    id: "daily-coffee",
+    name: "COFFEE",
+    items: [
+      {
+        name: "Ca Phe Den",
+        description: "Vietnamese black coffee",
+        price: "£5.00",
+        tags: ["Vegan"],
+      },
+      {
+        name: "Ca Phe Sua",
+        description: "Vietnamese condensed milk coffee",
+        price: "£5.00",
+        tags: ["Vegetarian"],
+      },
+    ],
+  },
+  {
+    id: "daily-alcohol",
+    name: "ALCOHOL",
+    items: [
+      {
+        name: "Beer",
+        description: "Hanoi Beer / Saigon Beer / Singha Beer",
+        price: "£5.50",
+      },
+      {
+        name: "House Wine (Glass)",
+        description: "Red wine or white wine",
+        price: "£6.00",
+      },
+      {
+        name: "House Wine (Bottle)",
+        description: "Red wine or white wine",
+        price: "£22.50",
+      },
+      {
+        name: "Prosecco Glass",
+        description: "Prosecco by the glass",
+        price: "£7.00",
+      },
+    ],
+  },
+  {
+    id: "daily-extra",
+    name: "EXTRA",
+    items: [
+      { name: "Vegetables", description: "Extra vegetables", price: "£2.00" },
+      { name: "Meat", description: "Extra meat", price: "£3.50" },
+      {
+        name: "Grilled Chicken",
+        description: "Extra grilled chicken",
+        price: "£4.50",
+      },
+      {
+        name: "King Prawns",
+        description: "Extra king prawns",
+        price: "£4.00",
+      },
+      { name: "Fried Rice", description: "Side of fried rice", price: "£4.00" },
+      {
+        name: "Steamed Rice",
+        description: "Side of steamed rice",
+        price: "£3.50",
+      },
+    ],
+  },
 ];
 
 export const lunchMenuNote = "Mon – Fri, 11:45am – 4:00pm";
 
+/** Weekday lunch favourites drawn from the printed daily menu. */
 export const lunchMenuCategories: MenuCategory[] = [
   {
     id: "lunch-noodle-soup",
@@ -411,16 +517,20 @@ export const lunchMenuCategories: MenuCategory[] = [
     items: [
       {
         name: "Pho Bo Chin",
-        description: "Well cooked beef noodle soup", price: "£12", tags: ["Gluten free"],
+        description: "Well cooked beef noodle soup",
+        price: "£13.00",
       },
       {
         name: "Pho Ga",
-        description: "Chicken noodle soup", price: "£12", tags: ["Gluten free"],
+        description: "Chicken noodle soup",
+        price: "£13.00",
       },
       {
         name: "Pho Chay",
-        description: "Tofu & mushroom noodle soup", price: "£12", tags: ["Gluten free", "Vegetarian", "Vegan"],
-      }
+        description: "Flat rice noodles soup with tofu and vegetables",
+        price: "£12.00",
+        tags: ["Vegetarian", "Vegan"],
+      },
     ],
   },
   {
@@ -429,39 +539,72 @@ export const lunchMenuCategories: MenuCategory[] = [
     items: [
       {
         name: "Pho Xao",
-        description: "Wok stir fried flat rice noodles with Asian vegetables and bean sprouts (Chicken / Beef / Vegetables & Tofu)", price: "£12", tags: ["Gluten free"],
-      },
-      {
-        name: "Mi Xao",
-        description: "Wok stir fried egg noodles with Asian vegetables and bean sprouts (Chicken / Beef / Vegetables & Tofu)", price: "£12",
+        description:
+          "Wok stir-fried flat rice noodle with Asian vegetables (Chicken £12.50 · Beef £13.00 · King Prawns £14.50)",
+        price: "£12.50 – £14.50",
       },
       {
         name: "Bun",
-        description: "Vermicelli mix with stir fried vegetables served with nuoc cham sauce (Chicken / Vegetables and Tofu)", price: "£12", tags: ["Gluten free"],
-      }
+        description:
+          "Vermicelli mix with wok stir-fried vegetables served with nuoc cham sauce (Chicken £12.50 · Pork Spring Rolls £12.50 · Beef £13.00 · King Prawns £14.50)",
+        price: "£12.50 – £14.50",
+      },
+      {
+        name: "Bun Ga Nuong",
+        description: "Vermicelli with grilled chicken thighs",
+        price: "£13.50",
+      },
     ],
   },
   {
-    id: "lunch-broken-rice",
-    name: "Broken Rice",
+    id: "lunch-jasmine-rice",
+    name: "Jasmine Rice",
     items: [
       {
         name: "Com Ca Ri",
-        description: "Broken rice curry (Chicken / Beef / Vegetables & Tofu)", price: "£12", tags: ["Gluten free"],
+        description:
+          "Jasmine rice with Vietnamese curry and vegetables (Chicken £12.50 · Beef £13.00 · King Prawns £14.00)",
+        price: "£12.50 – £14.00",
       },
       {
-        name: "Com Sa Ot",
-        description: "Stir-fried marinated with chilli lemongrass (Chicken / Beef / Vegetables & Tofu)", price: "£12",
-      }
+        name: "Com Chien",
+        description:
+          "Vietnamese wok fried rice served with vegetable and soya sauce (Chicken £12.50 · Beef £13.00 · King Prawns £14.00)",
+        price: "£12.50 – £14.00",
+      },
+      {
+        name: "Com Sot Xoai",
+        description:
+          "Jasmine rice served with mango sauce (Chicken £11.50 · Prawn £13.00)",
+        price: "£11.50 – £13.00",
+      },
     ],
-  }
+  },
 ];
 
 /** @deprecated use dailyMenuCategories */
 export const menuCategories = dailyMenuCategories;
 
 export const featuredDishes = [
-  { name: "Special Pho Kentish Mixed Beef", description: "Meat balls, rare steak, and well cooked beef noodle soup — our signature pho.", image: siteImages.dishes.specialPho, featured: true },
-  { name: "Bun Cha", description: "Vermicelli with grilled mix pork belly & spring roll — a Hanoi classic.", image: siteImages.dishes.bunCha, featured: true },
-  { name: "Pho Chay", description: "Mushrooms and vegetable noodle soup — refined, fragrant, and vegetarian.", image: siteImages.dishes.vegetablePho, featured: true },
+  {
+    name: "Special Pho Kentish Mixed Beef",
+    description:
+      "Meat balls, rare steak and well cooked beef noodle soup — our signature pho.",
+    image: siteImages.dishes.specialPho,
+    featured: true,
+  },
+  {
+    name: "Bun Cha",
+    description:
+      "Vermicelli with grilled mixed pork belly and vegetables spring rolls — a Hanoi classic.",
+    image: siteImages.dishes.bunCha,
+    featured: true,
+  },
+  {
+    name: "Pho Chay",
+    description:
+      "Flat rice noodles soup with tofu and vegetables — fragrant and vegetarian.",
+    image: siteImages.dishes.vegetablePho,
+    featured: true,
+  },
 ];

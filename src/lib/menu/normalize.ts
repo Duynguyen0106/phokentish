@@ -15,6 +15,7 @@ import type {
   MenuType,
   MenuVariant,
 } from "@/lib/menu/types";
+import { MENU_CONTENT_VERSION } from "@/lib/menu/types";
 
 interface ParsedVariant {
   protein: string;
@@ -154,6 +155,7 @@ function buildBranchMenu(): BranchMenu {
 
 export function buildSeedMenu(): MenuData {
   return {
+    contentVersion: MENU_CONTENT_VERSION,
     branches: {
       "kentish-town": buildBranchMenu(),
     },

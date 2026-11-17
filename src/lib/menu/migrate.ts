@@ -4,7 +4,7 @@ import type {
   MenuData,
   MenuLocationSlug,
 } from "@/lib/menu/types";
-import { MENU_LOCATION_SLUGS } from "@/lib/menu/types";
+import { MENU_CONTENT_VERSION, MENU_LOCATION_SLUGS } from "@/lib/menu/types";
 
 function isBranchMenu(value: unknown): value is BranchMenu {
   if (!value || typeof value !== "object") return false;
@@ -50,7 +50,11 @@ export function normalizeMenuData(raw: unknown): MenuData {
     }
 
     if (MENU_LOCATION_SLUGS.every((slug) => normalized[slug])) {
-      return { branches: normalized };
+      const contentVersion =
+        typeof (raw as MenuData).contentVersion === "number"
+          ? (raw as MenuData).contentVersion
+          : undefined;
+      return { contentVersion, branches: normalized };
     }
   }
 
@@ -62,6 +66,7 @@ export function normalizeMenuData(raw: unknown): MenuData {
     };
 
     return {
+      contentVersion: undefined,
       branches: {
         "kentish-town": cloneBranchMenu(shared),
       },
@@ -69,6 +74,7 @@ export function normalizeMenuData(raw: unknown): MenuData {
   }
 
   return {
+    contentVersion: MENU_CONTENT_VERSION,
     branches: {
       "kentish-town": { daily: [], lunch: [], lunchNote: lunchMenuNote },
     },
