@@ -6,8 +6,15 @@ export function getDataDir(): string {
     return process.env.PHO_KENTISH_DATA_DIR;
   }
 
-  // Vercel and AWS Lambda only allow writes under /tmp
-  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+  // Ephemeral serverless runtimes only allow writes under /tmp
+  if (
+    process.env.VERCEL ||
+    process.env.AWS_LAMBDA_FUNCTION_NAME ||
+    process.env.CF_PAGES ||
+    process.env.CLOUDFLARE_ENV ||
+    typeof (globalThis as { WebSocketPair?: unknown }).WebSocketPair !==
+      "undefined"
+  ) {
     return path.join("/tmp", "pho-kentish-data");
   }
 
@@ -15,5 +22,10 @@ export function getDataDir(): string {
 }
 
 export function isServerlessRuntime(): boolean {
-  return Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+  return Boolean(
+    process.env.VERCEL ||
+      process.env.AWS_LAMBDA_FUNCTION_NAME ||
+      process.env.CF_PAGES ||
+      process.env.CLOUDFLARE_ENV,
+  );
 }

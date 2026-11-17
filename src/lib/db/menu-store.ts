@@ -46,9 +46,14 @@ async function readLocalMenu(): Promise<MenuData | null> {
 
 async function writeLocalMenu(menu: MenuData): Promise<void> {
   menuCache = menu;
-  const dataDir = getDataDir();
-  await fs.mkdir(dataDir, { recursive: true });
-  await fs.writeFile(menuFile(), JSON.stringify(menu, null, 2));
+  try {
+    const dataDir = getDataDir();
+    await fs.mkdir(dataDir, { recursive: true });
+    await fs.writeFile(menuFile(), JSON.stringify(menu, null, 2));
+  } catch (error) {
+    // Cloudflare Workers / read-only runtimes: keep the in-memory menu.
+    console.warn("[menu-store] local persist skipped:", error);
+  }
 }
 
 async function readSupabaseMenu(): Promise<MenuData | null> {
@@ -144,15 +149,25 @@ export async function getMenu(): Promise<MenuData> {
   if (menuCache?.contentVersion === MENU_CONTENT_VERSION) return menuCache;
 
   let menu: MenuData | null = null;
-  if (useSupabase()) {
-    menu = await readSupabaseMenu();
-  } else {
-    menu = await readLocalMenu();
+  try {
+    if (useSupabase()) {
+      menu = await readSupabaseMenu();
+    } else {
+      menu = await readLocalMenu();
+    }
+  } catch (error) {
+    console.warn("[menu-store] read failed, using seed:", error);
+    menu = null;
   }
 
   if (!menu || menu.contentVersion !== MENU_CONTENT_VERSION) {
     menu = buildSeedMenu();
-    await persistMenu(menu);
+    try {
+      await persistMenu(menu);
+    } catch (error) {
+      console.warn("[menu-store] persist failed, serving seed in-memory:", error);
+      menuCache = menu;
+    }
   }
 
   menuCache = menu;
